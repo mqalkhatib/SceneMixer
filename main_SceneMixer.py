@@ -171,7 +171,7 @@ net_flops(model)
 # Define a callback to modify the learning rate dynamically
 import keras
 checkpoint = keras.callbacks.ModelCheckpoint(
-        f"Model_Weights/{dataset}_{SceneMixer}_{SEED}.h5",
+        f"Model_Weights/{dataset}_SceneMixer_{SEED}.h5",
         monitor='val_accuracy',
         save_best_only=True,
         save_weights_only=True,
@@ -196,11 +196,12 @@ history = model.fit(train_ds,
 display_history(history)
 
 
-model.load_weights(f"Model_Weights/{dataset}_{SceneMixer}_{SEED}.h5")
+model.load_weights(f"Model_Weights/{dataset}_SceneMixer_{SEED}.h5")
 
 
 show_random_test_prediction(model, test_ds, class_names)
 
 
 oa, aa, kappa, cm, each_acc = evaluate_model(model, test_ds, class_names)
+
 
